@@ -20,6 +20,7 @@ package org.apache.maven.plugin.nar;
  */
 
 import java.io.File;
+import java.io.IOException;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -43,7 +44,14 @@ public class NarGnuProcess
         {
             getLog().info( "Running GNU process" );
 
-            copyResources( srcDir, getAOL().toString() );
+            // copyResources( srcDir, getAOL().toString() );
+            File destDir = getLayout().getAOLCDirectory(getTargetDirectory(), getMavenProject().getArtifactId(),
+                    getMavenProject().getVersion(), getAOL().toString(), getClassifiersString(), null);
+            try {
+				NarUtil.copyDirectoryStructure( srcDir, destDir, null, NarUtil.DEFAULT_EXCLUDES );
+			} catch (IOException e) {
+				throw new MojoExecutionException(e.getLocalizedMessage());
+			}
         }
     }
 }

@@ -66,6 +66,9 @@ public interface NarLayout
      */
     File getBinDirectory( File baseDir, String artifactId, String version, String aol )
         throws MojoExecutionException, MojoFailureException;
+    
+    File getAOLCDirectory( File baseDir, String artifactId, String version, String aol, String classifiers, String type)
+            throws MojoExecutionException, MojoFailureException;
 
     /**
      * Called to attach nars to main nar/jar file. This method needs to produce all the attached nar files and set NarInfo

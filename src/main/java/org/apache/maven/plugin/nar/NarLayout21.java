@@ -59,11 +59,12 @@ public class NarLayout21
         return new File( baseDir, artifactId + "-" + version + "-" + NarConstants.NAR_NO_ARCH );
     }
 
-    private File getAolDirectory( File baseDir, String artifactId, String version, String aol, String type )
-    {
-        return new File( baseDir, artifactId + "-" + version + "-" + aol + "-" + type );
-    }
-
+	public File getAOLCDirectory(File baseDir, String artifactId,
+			String version, String aol, String classifiers, String type)
+			throws MojoExecutionException, MojoFailureException {
+		return new File( baseDir, artifactId + "-" + version + "-" + aol + ((null ==  classifiers) ? "" : "-" + classifiers) + ((null ==  type) ? "" : "-" + type) );
+	}
+    
     /*
      * (non-Javadoc)
      * @see org.apache.maven.plugin.nar.NarLayout#getIncludeDirectory(java.io.File)
@@ -79,7 +80,7 @@ public class NarLayout21
      * java.lang.String)
      */
     public final File getLibDirectory( File baseDir, String artifactId, String version, String aol, String type )
-        throws MojoExecutionException
+        throws MojoExecutionException, MojoFailureException
     {
         if ( type.equals( Library.EXECUTABLE ) )
         {
@@ -87,7 +88,7 @@ public class NarLayout21
                                               "NAR: for type EXECUTABLE call getBinDirectory instead of getLibDirectory" );
         }
 
-        File dir = getAolDirectory( baseDir, artifactId, version, aol, type );
+        File dir = getAOLCDirectory( baseDir, artifactId, version, aol, null, type );
         dir = new File( dir, fileLayout.getLibDirectory( aol, type ) );
         return dir;
     }
@@ -97,9 +98,9 @@ public class NarLayout21
      * @see org.apache.maven.plugin.nar.NarLayout#getLibDir(java.io.File, org.apache.maven.plugin.nar.AOL,
      * java.lang.String)
      */
-    public final File getBinDirectory( File baseDir, String artifactId, String version, String aol )
+    public final File getBinDirectory( File baseDir, String artifactId, String version, String aol ) throws MojoExecutionException, MojoFailureException
     {
-        File dir = getAolDirectory( baseDir, artifactId, version, aol, Library.EXECUTABLE );
+        File dir = getAOLCDirectory( baseDir, artifactId, version, aol, null, Library.EXECUTABLE );
         dir = new File( dir, fileLayout.getBinDirectory( aol ) );
         return dir;
     }
@@ -143,7 +144,10 @@ public class NarLayout21
             int lastDash = classifier.lastIndexOf( '-' );
             String type = classifier.substring( lastDash + 1 );
             AOL aol = new AOL( classifier.substring( 0, lastDash - 1 ) );
-
+       	 
+            getLog().debug( "aol: " + aol );
+            getLog().debug( "type: " + type );
+       	 
             if ( type.equals( Library.EXECUTABLE ) )
             {
                 if ( narInfo.getBinding( aol, null ) == null )
@@ -218,4 +222,6 @@ public class NarLayout21
             FileUtils.basename( narFile.getPath(), "." + NarConstants.NAR_EXTENSION ));
         return dir;
     }
+
+
 }

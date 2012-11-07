@@ -20,6 +20,7 @@ package org.apache.maven.plugin.nar;
  */
 
 import java.io.File;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.maven.model.Model;
@@ -27,6 +28,7 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.util.StringUtils;
 
 /**
  * @author Mark Donszelmann
@@ -74,6 +76,13 @@ public abstract class AbstractNarMojo
      */
     private String aol;
 
+    /**
+     * Additional classifiers for the NAR
+     * 
+     * @parameter expression=""
+     */
+    protected List classifiers;
+    
     /**
      * Linker
      * 
@@ -228,6 +237,13 @@ public abstract class AbstractNarMojo
         return testTargetDirectory;
     }
 
+    protected final String getClassifiersString() {
+    	if (null == classifiers) {
+    		return null;
+    	}
+    	return StringUtils.join(classifiers.toArray(), "-");
+    }
+    
     protected final File getUnpackDirectory()
     {
         return unpackDirectory;

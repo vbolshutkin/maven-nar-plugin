@@ -203,4 +203,10 @@ public class NarLayout20
             FileUtils.basename( narFile.getPath(), "." + NarConstants.NAR_EXTENSION ));
         return dir;
     }
+
+	public File getAOLCDirectory(File baseDir, String artifactId,
+			String version, String aol, String classifiers, String type)
+			throws MojoExecutionException, MojoFailureException {
+		return new File( baseDir, artifactId + "-" + version + "-" + aol + ((null ==  classifiers) ? "" : "-" + classifiers) + ((null ==  type) ? "" : "-" + type) );
+	}
 }

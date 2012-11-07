@@ -90,7 +90,9 @@ public abstract class AbstractGnuMojo
     private File getGnuAOLDirectory()
         throws MojoFailureException, MojoExecutionException
     {
-        return new File( gnuTargetDirectory, getAOL().toString() );
+    	String classifiers = getClassifiersString();
+    	String dirname = getAOL().toString() + ((null ==  classifiers) ? "" : "-" + classifiers); 
+        return new File( gnuTargetDirectory,  dirname );
     }
     
     /**

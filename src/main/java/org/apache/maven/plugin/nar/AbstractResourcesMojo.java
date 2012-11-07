@@ -114,7 +114,7 @@ public abstract class AbstractResourcesMojo
         throws MojoFailureException, IOException, MojoExecutionException
     {
         int copied = 0;
-
+        
         // copy libraries
         File libDir = new File( srcDir, resourceLibDir );
         if ( libDir.exists() )

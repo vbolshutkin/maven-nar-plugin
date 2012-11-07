@@ -56,6 +56,8 @@ public class NarPackageMojo
     public final void narExecute()
         throws MojoExecutionException, MojoFailureException
     {
+    	 getLog().info( "Running NAR package" );
+    	
         // let the layout decide which nars to attach
         getLayout().attachNars( getTargetDirectory(), archiverManager, projectHelper, getMavenProject(), getNarInfo() );
         
