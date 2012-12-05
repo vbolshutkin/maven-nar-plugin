@@ -202,7 +202,7 @@ public abstract class AbstractNarMojo
         return os;
     }
 
-    protected final AOL getAOL()
+    public final AOL getAOL()
         throws MojoFailureException, MojoExecutionException
     {
         return aolId;
@@ -264,7 +264,7 @@ public abstract class AbstractNarMojo
         return narLayout;
     }
 
-    protected final MavenProject getMavenProject()
+    public final MavenProject getMavenProject()
     {
         return mavenProject;
     }

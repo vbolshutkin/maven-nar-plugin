@@ -3,6 +3,7 @@ Maven NAR Plugin
 	---
 	---
 Mark Donszelmann
+Vladimir Bolshutkin
 	---
 
 NAR Configuration
@@ -30,6 +31,9 @@ NAR Configuration
   <failOnError/>
   <runtime/>
   <libtool/>
+  <classifiers>
+    <classifier>classifier</classifier>
+  </classifiers>
   
   <gnuUseOnWindows/>
   <gnuSourceDirectory/>

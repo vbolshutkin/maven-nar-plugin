@@ -152,7 +152,7 @@ public class Javah
         return classPaths;
     }
 
-    protected final File getJniDirectory()
+    public final File getJniDirectory()
     {
         if ( jniDirectory == null )
         {

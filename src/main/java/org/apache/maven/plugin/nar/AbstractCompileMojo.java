@@ -24,6 +24,10 @@ import java.util.Collections;
 import java.util.List;
 
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.nar.lang.C;
+import org.apache.maven.plugin.nar.lang.Cpp;
+import org.apache.maven.plugin.nar.lang.Fortran;
+import org.apache.maven.plugin.nar.lang.Java;
 import org.apache.tools.ant.Project;
 
 /**
@@ -135,7 +139,7 @@ public abstract class AbstractCompileMojo
 
     private Project antProject;
 
-    protected final Project getAntProject()
+    public final Project getAntProject()
     {
         if ( antProject == null )
         {
@@ -207,7 +211,7 @@ public abstract class AbstractCompileMojo
         return getNarInfo().getProperty( aol, "output", output );
     }
 
-    protected final File getJavaHome( AOL aol )
+    public final File getJavaHome( AOL aol )
         throws MojoExecutionException
     {
         // FIXME should be easier by specifying default...
@@ -232,7 +236,7 @@ public abstract class AbstractCompileMojo
         return tests;
     }
 
-    protected final Javah getJavah()
+    public final Javah getJavah()
     {
         if ( javah == null )
         {
