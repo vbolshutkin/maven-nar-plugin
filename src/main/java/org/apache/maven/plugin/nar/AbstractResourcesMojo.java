@@ -26,6 +26,11 @@ import java.util.List;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugin.nar.common.AOL;
+import org.apache.maven.plugin.nar.common.NarConstants;
+import org.apache.maven.plugin.nar.common.NarUtil;
+import org.apache.maven.plugin.nar.common.OS;
+import org.apache.maven.plugin.nar.direct.Library;
 import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.UnArchiver;
 import org.codehaus.plexus.archiver.manager.ArchiverManager;
@@ -40,15 +45,6 @@ import org.codehaus.plexus.util.FileUtils;
 public abstract class AbstractResourcesMojo
     extends AbstractCompileMojo
 {
-	
-    /**
-     * Which builder should NAR use? Supported builders are:
-     * cmake, gnu(autotools), nar
-     * 
-     * @parameter expresssion="nar.builder" default-value="cmake"
-     * @required
-     */
-    protected String builder;
 	
     /**
      * Binary directory

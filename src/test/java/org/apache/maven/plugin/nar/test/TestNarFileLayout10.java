@@ -21,9 +21,9 @@ package org.apache.maven.plugin.nar.test;
 
 import java.io.File;
 
-import org.apache.maven.plugin.nar.Library;
-import org.apache.maven.plugin.nar.NarFileLayout;
-import org.apache.maven.plugin.nar.NarFileLayout10;
+import org.apache.maven.plugin.nar.direct.Library;
+import org.apache.maven.plugin.nar.filelayout.NarFileLayout;
+import org.apache.maven.plugin.nar.filelayout.NarFileLayout10;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;

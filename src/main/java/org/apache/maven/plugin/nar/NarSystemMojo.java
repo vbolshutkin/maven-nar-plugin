@@ -27,6 +27,7 @@ import java.util.Iterator;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugin.nar.direct.Library;
 
 /**
  * Generates a NarSystem class with static methods to use inside the java part of the library.

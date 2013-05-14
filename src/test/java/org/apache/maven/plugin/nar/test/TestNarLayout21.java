@@ -28,13 +28,13 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.plugin.logging.SystemStreamLog;
-import org.apache.maven.plugin.nar.AbstractNarLayout;
-import org.apache.maven.plugin.nar.Library;
-import org.apache.maven.plugin.nar.NarConstants;
-import org.apache.maven.plugin.nar.NarFileLayout;
-import org.apache.maven.plugin.nar.NarFileLayout10;
-import org.apache.maven.plugin.nar.NarLayout;
-import org.apache.maven.plugin.nar.NarLayout21;
+import org.apache.maven.plugin.nar.common.NarConstants;
+import org.apache.maven.plugin.nar.direct.Library;
+import org.apache.maven.plugin.nar.filelayout.NarFileLayout;
+import org.apache.maven.plugin.nar.filelayout.NarFileLayout10;
+import org.apache.maven.plugin.nar.layout.AbstractNarLayout;
+import org.apache.maven.plugin.nar.layout.NarLayout;
+import org.apache.maven.plugin.nar.layout.NarLayout21;
 
 /**
  * @author Mark Donszelmann (Mark.Donszelmann@gmail.com)
@@ -83,7 +83,7 @@ public class TestNarLayout21
     }
 
     /**
-     * Test method for {@link org.apache.maven.plugin.nar.NarLayout20#getIncludeDirectory(java.io.File)}.
+     * Test method for {@link org.apache.maven.plugin.nar.layout.NarLayout20#getIncludeDirectory(java.io.File)}.
      * 
      * @throws MojoFailureException
      * @throws MojoExecutionException
@@ -97,7 +97,7 @@ public class TestNarLayout21
 
     /**
      * Test method for
-     * {@link org.apache.maven.plugin.nar.NarLayout20#getLibDirectory(java.io.File, java.lang.String, java.lang.String)}
+     * {@link org.apache.maven.plugin.nar.layout.NarLayout20#getLibDirectory(java.io.File, java.lang.String, java.lang.String)}
      * .
      * 
      * @throws MojoFailureException
@@ -111,7 +111,7 @@ public class TestNarLayout21
     }
 
     /**
-     * Test method for {@link org.apache.maven.plugin.nar.NarLayout20#getBinDirectory(java.io.File, java.lang.String)}.
+     * Test method for {@link org.apache.maven.plugin.nar.layout.NarLayout20#getBinDirectory(java.io.File, java.lang.String)}.
      * 
      * @throws MojoFailureException
      * @throws MojoExecutionException

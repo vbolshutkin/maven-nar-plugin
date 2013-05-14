@@ -24,6 +24,9 @@ import java.util.Collections;
 import java.util.List;
 
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.nar.common.AOL;
+import org.apache.maven.plugin.nar.common.NarUtil;
+import org.apache.maven.plugin.nar.direct.Javah;
 import org.apache.maven.plugin.nar.lang.C;
 import org.apache.maven.plugin.nar.lang.Cpp;
 import org.apache.maven.plugin.nar.lang.Fortran;
@@ -151,7 +154,7 @@ public abstract class AbstractCompileMojo
         return antProject;
     }
 
-    protected final C getC()
+    public final C getC()
     {
         if ( c == null )
         {
@@ -161,7 +164,7 @@ public abstract class AbstractCompileMojo
         return c;
     }
 
-    protected final Cpp getCpp()
+    public final Cpp getCpp()
     {
         if ( cpp == null )
         {
@@ -171,7 +174,7 @@ public abstract class AbstractCompileMojo
         return cpp;
     }
 
-    protected final Fortran getFortran()
+    public final Fortran getFortran()
     {
         if ( fortran == null )
         {
@@ -227,7 +230,7 @@ public abstract class AbstractCompileMojo
         return libraries;
     }
 
-    protected final List getTests()
+    public final List getTests()
     {
         if ( tests == null )
         {

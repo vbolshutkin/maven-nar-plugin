@@ -31,6 +31,8 @@ import java.util.jar.JarFile;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.logging.Log;
+import org.apache.maven.plugin.nar.common.AOL;
+import org.apache.maven.plugin.nar.common.NarConstants;
 
 /**
  * @author Mark Donszelmann

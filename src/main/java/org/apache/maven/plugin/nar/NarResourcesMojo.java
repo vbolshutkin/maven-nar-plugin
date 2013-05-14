@@ -25,6 +25,8 @@ import java.util.Iterator;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugin.nar.common.NarConstants;
+import org.apache.maven.plugin.nar.common.NarUtil;
 import org.codehaus.plexus.util.FileUtils;
 import org.codehaus.plexus.util.SelectorUtils;
 

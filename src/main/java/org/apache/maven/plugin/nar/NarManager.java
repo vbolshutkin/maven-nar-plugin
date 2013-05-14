@@ -38,6 +38,12 @@ import org.apache.maven.artifact.versioning.InvalidVersionSpecificationException
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.logging.Log;
+import org.apache.maven.plugin.nar.common.AOL;
+import org.apache.maven.plugin.nar.common.NarConstants;
+import org.apache.maven.plugin.nar.common.NarUtil;
+import org.apache.maven.plugin.nar.direct.Library;
+import org.apache.maven.plugin.nar.direct.Linker;
+import org.apache.maven.plugin.nar.layout.NarLayout;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.archiver.manager.ArchiverManager;
 

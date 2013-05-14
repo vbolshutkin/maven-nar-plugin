@@ -53,7 +53,8 @@ public class NarPackageMojo
      */
     private MavenProjectHelper projectHelper;
 
-    public final void narExecute()
+    @Override
+	public final void narExecute()
         throws MojoExecutionException, MojoFailureException
     {
     	 getLog().info( "Running NAR package" );

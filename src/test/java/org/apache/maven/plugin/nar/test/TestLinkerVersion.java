@@ -19,9 +19,9 @@
 
 package org.apache.maven.plugin.nar.test;
 
-import org.apache.maven.plugin.nar.Linker;
 import org.apache.maven.plugin.nar.NarProperties;
-import org.apache.maven.plugin.nar.NarUtil;
+import org.apache.maven.plugin.nar.common.NarUtil;
+import org.apache.maven.plugin.nar.direct.Linker;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;

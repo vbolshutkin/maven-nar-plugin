@@ -42,7 +42,7 @@ public abstract class AbstractDependencyMojo
         return localRepository;
     }
 
-    protected final NarManager getNarManager()
+    public final NarManager getNarManager()
         throws MojoFailureException, MojoExecutionException
     {
         return new NarManager( getLog(), getLocalRepository(), getMavenProject(), getArchitecture(), getOS(),

@@ -27,6 +27,12 @@ import org.apache.maven.model.Model;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugin.nar.common.AOL;
+import org.apache.maven.plugin.nar.common.NarConstants;
+import org.apache.maven.plugin.nar.common.NarUtil;
+import org.apache.maven.plugin.nar.direct.Linker;
+import org.apache.maven.plugin.nar.layout.AbstractNarLayout;
+import org.apache.maven.plugin.nar.layout.NarLayout;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.StringUtils;
 
@@ -139,10 +145,20 @@ public abstract class AbstractNarMojo
     /**
      * Layout to be used for building and unpacking artifacts
      * 
-     * @parameter expression="${nar.layout}" default-value="org.apache.maven.plugin.nar.NarLayout21"
-     * @required
+     * @parameter expression="${nar.layout}"
      */
     private String layout;
+    
+    /**
+     * Parameter that selects a builder to be used for the project. 
+     * It is also used to determine the default layout.
+     * Supported builders are:
+     * cmake, gnu(autotools), nar
+     * 
+     * @parameter expresssion="nar.builder" default-value="cmake"
+     * @required
+     */
+    protected String builder;
     
     private NarLayout narLayout;
 
@@ -173,6 +189,17 @@ public abstract class AbstractNarMojo
         properties.setProperty("nar.aol.key", aolId.getKey());
         model.setProperties(properties);
 
+        if (layout == null) {
+        	// XXX this should be done be special builder classes and polymorphism
+        	if ("!!!cmake".equals(builder)) {
+        		layout = "org.apache.maven.plugin.nar.layout.CMakeNarLayout";
+        	} else {
+        		layout = "org.apache.maven.plugin.nar.layout.NarLayout21";
+        	}
+        	
+        	
+        }
+        
         if ( targetDirectory == null )
         {
             targetDirectory = new File( mavenProject.getBuild().getDirectory(), "nar" );
@@ -197,13 +224,13 @@ public abstract class AbstractNarMojo
         return architecture;
     }
 
-    protected final String getOS()
+    public final String getOS()
     {
         return os;
     }
 
     public final AOL getAOL()
-        throws MojoFailureException, MojoExecutionException
+        throws MojoExecutionException
     {
         return aolId;
     }

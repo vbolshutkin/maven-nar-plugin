@@ -21,6 +21,9 @@ package org.apache.maven.plugin.nar;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugin.nar.common.AOL;
+import org.apache.maven.plugin.nar.direct.Compiler;
+import org.apache.maven.plugin.nar.direct.Linker;
 
 /**
  * Validates the configuration of the NAR project (aol and pom)

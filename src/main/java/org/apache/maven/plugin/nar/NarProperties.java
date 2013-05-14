@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugin.nar.common.NarUtil;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.PropertyUtils;
 
@@ -18,7 +19,7 @@ public class NarProperties {
 	
 	private NarProperties(MavenProject project) throws MojoFailureException {
 		
-		Properties defaults = PropertyUtils.loadProperties( NarUtil.class.getResourceAsStream( AOL_PROPERTIES ) );
+		Properties defaults = PropertyUtils.loadProperties( NarProperties.class.getResourceAsStream( AOL_PROPERTIES ) );
         if ( defaults == null )
         {
             throw new MojoFailureException( "NAR: Could not load default properties file: '"+AOL_PROPERTIES+"'." );
