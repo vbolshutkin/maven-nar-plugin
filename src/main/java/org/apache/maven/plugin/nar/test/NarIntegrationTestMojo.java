@@ -1,4 +1,4 @@
-package org.apache.maven.plugin.nar;
+package org.apache.maven.plugin.nar.test;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -44,6 +44,8 @@ import org.apache.maven.artifact.versioning.VersionRange;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugin.nar.AbstractCompileMojo;
+import org.apache.maven.plugin.nar.NarArtifact;
 import org.apache.maven.plugin.nar.common.NarUtil;
 import org.apache.maven.plugin.nar.common.OS;
 import org.apache.maven.plugin.nar.direct.Library;
