@@ -66,6 +66,13 @@ public class CMakeGenerateMojo extends AbstractCMakeMojo {
 	private String tmpBuildPath;
 	
 	/**
+	 * Arguments to pass to GNU configure.
+	 * 
+	 * @parameter expression="${nar.cmake.generate.args}" default-value=""
+	 */
+	private String cmakeGenerateArgs;
+	
+	/**
 	 * The makefile generator to use.
 	 * 
 	 * @parameter default-value=""
@@ -115,7 +122,7 @@ public class CMakeGenerateMojo extends AbstractCMakeMojo {
 		}
 		command.add("-D" + "TARGET_PATH" + "=" + getCMakeAOLTargetDirectory().getAbsolutePath());
 		command.add("-D" + "BUILD_PATH" + "=" + tmpBuildPath);
-	
+	    command.add(cmakeGenerateArgs);
 
 		ProcessBuilder processBuilder = new ProcessBuilder(command)
 				.directory(targetPath);
